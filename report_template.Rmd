@@ -1,0 +1,86 @@
+---
+title: "AAPI Data Ethnic Group Profile"
+params:
+  group: "test"
+output:
+  html_document:
+    theme: simplex
+    toc: TRUE
+    
+---
+
+```{r, message=FALSE, warning=FALSE, include=FALSE}
+library(DT)
+library(readxl)
+library(tidyverse)
+library(highcharter)
+
+main_data <- read_excel('~/Documents/aapidata_group_profiles/maindata.xlsx')
+group_selected <- main_data %>% filter(ethnic_group == params$group)
+
+
+current_group <- group_selected$ethnic_group[1]
+knitr::knit_hooks$set(inline = function(x) { if(!is.numeric(x)){ x }else{ prettyNum(round(x,2), big.mark=",", digits=6) } })
+hcoptslang <- getOption("highcharter.lang")
+hcoptslang$thousandsSep <- ","
+options(highcharter.lang = hcoptslang)
+```
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+main_data<- main_data %>% arrange(asian_alone_pop)
+all_butselected<- main_data %>% filter(ethnic_group != current_group)
+# hchart(main_data, "bar", hcaes(x = ethnic_group, y = asian_alone_pop)) %>%
+# hc_rm_series(names = "Vietnamese") %>%
+# hc_add_series_labels_values(group_selected$ethnic_group, group_selected$asian_alone_pop,type = "bar")%>% 
+#   hc_yAxis(title = list(text = "Population")) %>%
+#   hc_xAxis(title = list(text = "Ethnic Group")) %>%
+#   hc_add_theme(hc_theme_flat()) 
+
+
+
+hchart(all_butselected, "bar", hcaes(x = ethnic_group, y = asian_alone_pop)) %>%
+hc_add_theme(hc_theme_flatdark()) %>%
+hc_add_series_labels_values(group_selected$ethnic_group, group_selected$asian_alone_pop,type = "bar")%>% 
+  hc_yAxis(title = list(text = "Population"),
+         labels= list(style =list(color ="#fff", fontSize='12px'))) %>%
+  hc_xAxis(title = list(text = "Ethnic Group"),
+           labels= list(style =list(color ="#fff", fontSize='15px'))) %>%
+ hc_title(text = "Asian American By Detailed Origin",
+           margin = 20, align = "left",
+           style = list(color = "#E26069"))%>%
+  hc_subtitle(text = "(2011-2015 ACS)",
+            margin = 20, align = "left",
+           style = list(color = "#E26069")) %>%
+  hc_chart(backgroundColor ='#262324')
+```
+
+## Who are <span class="output_style">`r current_group` Americans?</span>
+
+
+There are <span class="output_style">`r group_selected$asian_alone_pop` `r current_group` Americans</span> in the United States, which represents about <span class="output_style">`r group_selected$pct_asian_alone`%</span> percent of the total Asian Alone population. 
+
+
+## Educational Attainment
+
+According to the latest data from the <span class="output_style">`r group_selected$data_source`</span>, <span class="output_style">`r group_selected$pct_hsdegree_higher`% of `r current_group` Americans </span>have at least a High School Diploma or GED which is <span class="output_style">`r group_selected$pct_diff_with_total_hshiggher``r group_selected$higher_lower`</span> than Asian Americans a whole.
+
+In terms of higher education, <span class="output_style">`r group_selected$pct_ba_higher`% of `r current_group` Americans </span> hold at least a Bachelor's Degree or higher compared to <span class="output_style">`r group_selected$asian_total_pct_ba_higher`%</span> of Asian Americans as a whole.
+
+
+## Limited English Proficiency
+
+An important feature of Asian American and Pacific Islander, or AAPI, communities
+is their language diversity and variations in their levels of English proficiency across
+groups. English proficiency is important because it is significantly related to outcomes
+such as earnings, occupational mobility, quality of health care, and the ability to participate
+in civic and political life. There are <span class="output_style">`r group_selected$asian_total_lep`</span> Asian Americans in the U.S. who are limited english proficient (LEP).
+
+Among <span class="output_style">`r current_group` Americans</span>, <span class="output_style">`r group_selected$asian_pct_lep`%</span> (or <span class="output_style">`r group_selected$total_lep`</span>) are limited english proficient, compared to <span class="output_style">  `r group_selected$asian_pct_lep`%</span> for Asian Americans as a whole.
+
+
+
+
+
+

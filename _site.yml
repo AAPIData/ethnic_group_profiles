@@ -1,0 +1,58 @@
+name: "AAPI Data 2017 Ethnic Group Profiles"
+output_dir: "."
+navbar:
+  title: "AAPI DATA"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Back to AAPI Data"
+      href: http://www.aapidata.com
+    - text: "Ethnic Group Profiles"
+      icon: fa-globe
+      menu:
+        - text: "Asian Indian"
+          href: Asian Indian.html
+        - text: "Bangladeshi"
+          href: Bangladeshi.html
+        - text: "Burmese"
+          href: Burmese.html
+        - text: "Cambodian"
+          href: Cambodian.html
+        - text: "Chinese"
+          href: Chinese.html
+        - text: "Filipino"
+          href: Filipino.html
+        - text: "Hmong"
+          href: Hmong.html
+        - text: "Indonesian"
+          href: Indonesian.html
+        - text: "Japanese"
+          href: Japanese.html
+        - text: "Korean"
+          href: Korean.html
+        - text: "Laotian"
+          href: Laotian.html
+        - text: "Malaysian"
+          href: Malaysian.html
+        - text: "Mongolian"
+          href: Mongolian.html
+        - text: "Nepalese"
+          href: Nepalese.html
+        - text: "Okinawan"
+          href: Okinawan.html
+        - text: "Pakistani"
+          href: Pakistani.html
+        - text: "Sri Lankan"
+          href: Sri Lankan.html
+        - text: "Taiwanese"
+          href: Taiwanese.html
+        - text: "Thai"
+          href: Thai.html
+        - text: "Vietnamese"
+          href: Vietnamese.html
+output:
+  html_document:
+    theme: simplex
+    includes:
+      in_header: headerlogo.html
+    css: style.css

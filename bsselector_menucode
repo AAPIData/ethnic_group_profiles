@@ -1,0 +1,29 @@
+bsselector 
+```{r, message=FALSE, warning=FALSE, include=FALSE}
+library(bsselectR)
+library(stringr)
+
+groups <- paste0(groups = c("Asian Indian.html","Bangladeshi.html","Bhutanese.html","Burmese.html","Cambodian.html",
+           "Chinese.html",
+           "Filipino.html",
+           "Hmong.html",
+           "Indonesian.html",
+           "Japanese.html",
+           "Korean.html",
+           "Laotian.html",
+           "Malaysian.html",
+           "Mongolian.html",
+           "Nepalese.html",
+           "Okinawan.html",
+           "Pakistani.html",
+           "Sri Lankan.html",
+           "Taiwanese.html",
+           "Thai.html",
+           "Vietnamese.html"))
+
+```
+
+```{r}
+bsselect(groups, type = "iframe", 
+         live_search = TRUE, show_tick = TRUE)
+```
