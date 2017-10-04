@@ -15,7 +15,7 @@ library(readxl)
 library(tidyverse)
 library(highcharter)
 
-main_data <- read_excel('~/Documents/aapidata_group_profiles/maindata.xlsx')
+main_data <- read_excel('~/ethnic_group_profiles/maindata.xlsx')
 group_selected <- main_data %>% filter(ethnic_group == params$group)
 
 
