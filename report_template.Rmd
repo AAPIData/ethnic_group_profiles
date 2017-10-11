@@ -26,6 +26,12 @@ hcoptslang$thousandsSep <- ","
 options(highcharter.lang = hcoptslang)
 ```
 
+## Who are <span class="output_style">`r current_group` Americans?</span>
+
+
+There are <span class="output_style">`r group_selected$asian_alone_pop` `r current_group` Americans</span> in the United States, which represents about <span class="output_style">`r group_selected$pct_asian_alone`%</span> percent of the total Asian Alone population. 
+
+
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -56,10 +62,6 @@ hc_add_series_labels_values(group_selected$ethnic_group, group_selected$asian_al
   hc_chart(backgroundColor ='#262324')
 ```
 
-## Who are <span class="output_style">`r current_group` Americans?</span>
-
-
-There are <span class="output_style">`r group_selected$asian_alone_pop` `r current_group` Americans</span> in the United States, which represents about <span class="output_style">`r group_selected$pct_asian_alone`%</span> percent of the total Asian Alone population. 
 
 
 ## Educational Attainment
