@@ -5,8 +5,6 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "Back to AAPI Data"
-      href: http://www.aapidata.com
     - text: "Ethnic Group Profiles"
       icon: fa-globe
       menu:
@@ -38,8 +36,6 @@ navbar:
           href: Mongolian.html
         - text: "Nepalese"
           href: Nepalese.html
-        - text: "Okinawan"
-          href: Okinawan.html
         - text: "Pakistani"
           href: Pakistani.html
         - text: "Sri Lankan"
@@ -54,5 +50,5 @@ output:
   html_document:
     theme: simplex
     includes:
-      in_header: headerlogo.html
+      in_header: 
     css: style.css

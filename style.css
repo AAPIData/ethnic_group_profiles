@@ -1,6 +1,21 @@
 
 
 
+table.dataTable.no-footer {
+    margin-bottom: 20px;
+}
+
+
+th {
+    color: white;
+}
+
+.tocify .tocify-item a, .tocify .list-group-item{
+  font-size: 12pt;
+  color:#262324;
+  text-align: left;
+}
+
 body{
   font-family: Avenir Next;
   font-size: 20pt;

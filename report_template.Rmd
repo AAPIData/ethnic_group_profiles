@@ -17,6 +17,9 @@ library(tidyverse)
 library(highcharter)
 
 main_data <- read_excel('~/ethnic_group_profiles/maindata.xlsx')
+statepop<- read_excel('~/ethnic_group_profiles/maindata.xlsx', sheet = "state_pop")
+statepop_selected<- statepop  %>% select(Geography, params$group)
+names(statepop_selected)[2]<-"Population"
 group_selected <- main_data %>% filter(ethnic_group == params$group)
 
 
@@ -25,12 +28,18 @@ knitr::knit_hooks$set(inline = function(x) { if(!is.numeric(x)){ x }else{ pretty
 hcoptslang <- getOption("highcharter.lang")
 hcoptslang$thousandsSep <- ","
 options(highcharter.lang = hcoptslang)
+
+topstates<-statepop_selected %>% top_n(5)
+largest_state <- topstates$Geography[1]
+largest_state_pop <- topstates$Population[1]
+largest_state_proportion <- (largest_state_pop/group_selected$asian_alone_pop)*100
 ```
 
 ## Who are <span class="output_style">`r current_group` Americans?</span>
 
 
 There are <span class="output_style">`r group_selected$asian_alone_pop` `r current_group` Americans</span> in the United States, which represents about <span class="output_style">`r group_selected$pct_asian_alone`%</span> percent of the total Asian Alone population. 
+
 
 
 
@@ -63,6 +72,18 @@ hc_add_series_labels_values(group_selected$ethnic_group, group_selected$asian_al
   hc_chart(backgroundColor ='#262324')
 ```
 
+## Where do they live?
+Most <span class="output_style">`r current_group` Americans</span> live in these 5 states, the largest being <span class="output_style">`r largest_state`</span> which is home to <span class="output_style">`r  largest_state_pop`</span> <span class="output_style">`r current_group` Americans</span>, or about <span class="output_style">`r largest_state_proportion`% </span> of <span class="output_style">`r current_group` Americans</span> nationwide.
+
+## Top 5 States
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+
+datatable(topstates,rownames= FALSE, options = list(dom = 't')) %>%
+  formatCurrency(c(2),currency = "", interval = 3, mark = ",", digits=0)
+
+```
 
 
 ## Educational Attainment
