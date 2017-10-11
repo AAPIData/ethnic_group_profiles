@@ -6,6 +6,7 @@ output:
   html_document:
     theme: simplex
     toc: TRUE
+    toc_float: true
     
 ---
 
