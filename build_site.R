@@ -25,7 +25,7 @@ groups = c("Asian Indian","Bangladeshi","Bhutanese","Burmese","Cambodian",
            "Vietnamese")
 for(group in groups)
   rmarkdown::render(input = "report_template.Rmd", 
-                    output_file = paste0(group,".html"),
+                    output_file = paste0("fact_sheets/",group,".html"),
                     params = list(group = group)
   )
 

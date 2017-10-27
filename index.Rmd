@@ -5,5 +5,15 @@ title: "Welcome to AAPI Data's Ethnic Group Profiles"
 ## Using the menu above, please select the report you would like to view
 
 
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(bsselectR)
+library(stringr)
+setwd("~/ethnic_group_profiles/")
+ethnic_groups <- paste0(list.files("fact_sheets",full.names = TRUE))
+names(ethnic_groups) <-str_replace_all(ethnic_groups, 
+                                      c("\\.html" = "", 
+                                        "fact_sheets/" = ""))
 
 
+bsselect(ethnic_groups, type = "iframe",live_search = TRUE, show_tick = TRUE,frame_width ="100%", frame_height = "800")
+```
