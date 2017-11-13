@@ -1,22 +1,4 @@
 
-body {
-  font-size: 18px;
-  font-family: Avenir Next;
-  font-color:white;
-  line-height: 1.5;
-  font-weight: 400;
-}
-
-h1,h2,h3,h4,h5,h6,p {
- color:#F5E487;
- text-align: center;
- line-height: 1.45
-}
-h1 { font-size: 4em; }
-h2 { font-size: 3em; }
-h2{
-	text-align: left;
-}
 
 
 table.dataTable.no-footer {
@@ -42,10 +24,19 @@ body{
   font-weight: 400;
   background-color: #262324;
 }
+/* Headers */
+h1,h2,h3,h4,h5,h6{
+  font-size: 22pt;
+  color:#F5E487;
+  text-align: center;
+  line-height: 1.45;
+ 
+}
 
 h2{
 	text-align: left;
 }
+
 
 .output_style {
 color:#E26069;

@@ -2,7 +2,7 @@
 title: "Welcome to AAPI Data's Ethnic Group Profiles"
 ---
 
-## Using the menu above, please select the report you would like to view
+## Using the menu below, please select the report you would like to view
 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}

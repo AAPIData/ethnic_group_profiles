@@ -4,5 +4,5 @@ output:
   html_document:
     theme: simplex
     includes:
-      in_header: 
-    css: style.css
+      in_header:
+    css: style_OG.css

@@ -54,20 +54,19 @@ all_butselected<- main_data %>% filter(ethnic_group != current_group)
 #   hc_add_theme(hc_theme_flat()) 
 
 
-
-hchart(all_butselected, "bar", hcaes(x = ethnic_group, y = asian_alone_pop)) %>%
-hc_add_theme(hc_theme_flatdark()) %>%
-hc_add_series_labels_values(group_selected$ethnic_group, group_selected$asian_alone_pop,type = "bar")%>% 
+hchart(group_selected, "bar", hcaes(x = ethnic_group, y = asian_alone_pop)) %>%
+  hc_add_theme(hc_theme_flatdark()) %>%
+  hc_add_series_labels_values(all_butselected$ethnic_group, all_butselected$asian_alone_pop,type = "bar")%>% 
   hc_yAxis(title = list(text = "Population"),
-         labels= list(style =list(color ="#fff", fontSize='12px'))) %>%
+           labels= list(style =list(color ="#fff", fontSize='11px'))) %>%
   hc_xAxis(title = list(text = "Ethnic Group"),
            labels= list(style =list(color ="#fff", fontSize='15px'))) %>%
- hc_title(text = "Asian American By Detailed Origin",
+  hc_title(text = "Asian American By Detailed Origin",
            margin = 20, align = "left",
            style = list(color = "#E26069"))%>%
   hc_subtitle(text = "(2011-2015 ACS)",
-            margin = 20, align = "left",
-           style = list(color = "#E26069")) %>%
+              margin = 20, align = "left",
+              style = list(color = "#E26069")) %>%
   hc_chart(backgroundColor ='#262324')
 ```
 
@@ -86,6 +85,8 @@ datatable(topstates,rownames= FALSE, options = list(dom = 't')) %>%
 
 
 ## Educational Attainment
+
+
 
 According to the latest data from the <span class="output_style">`r group_selected$data_source`</span>, <span class="output_style">`r group_selected$pct_hsdegree_higher`% of `r current_group` Americans </span>have at least a High School Diploma or GED which is <span class="output_style">`r group_selected$pct_diff_with_total_hshiggher``r group_selected$higher_lower`</span> than Asian Americans a whole.
 
